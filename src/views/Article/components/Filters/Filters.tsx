@@ -105,7 +105,7 @@ const data: dataStructure[] = [
 export default function Filters(props: any) {
     const { loadData } = props
     const [dataFilter, setDataFilTer] = React.useState(data);
-    const [dataToSend, setDataToSend] = React.useState<any[]>(['']);
+    const [dataToSend, setDataToSend] = React.useState<any[]>([]);
 
     const dispatch = useDispatch();
     const handleSendData = () => {
@@ -124,7 +124,10 @@ export default function Filters(props: any) {
 
     }
 
-
+    const handleReloadData = () => {
+        loadData();
+        setDataFilTer(data);
+    }
 
 
 
@@ -148,7 +151,7 @@ export default function Filters(props: any) {
                         fullWidth
                         color={'secondary'}
                         variant={'contained'}
-                        onClick={() => loadData()}
+                        onClick={() => handleReloadData()}
 
                     >Очистить фильтр
                 </Button>

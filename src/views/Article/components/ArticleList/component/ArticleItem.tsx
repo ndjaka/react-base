@@ -7,7 +7,7 @@ import CardContent from '@material-ui/core/CardContent';
 import { Box, Button } from '@material-ui/core';
 import { Products, ApplicationState } from 'store/types';
 import { useDispatch } from 'react-redux';
-import { addFavEffect ,removeFavEffect} from 'store/effects/ProductEffets';
+import { addFavEffect, removeFavEffect } from 'store/effects/ProductEffets';
 
 
 
@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme: Theme) =>
         media: {
             height: 157,
             width: 211,
-            marginTop: 73, // 16:9
+            marginTop: 15, // 16:9
             marginLeft: 56,
             marginRight: 38.5
         },
@@ -71,7 +71,16 @@ export default function ArticleItem(props: ArticleItemProps) {
 
     return (
         <Card className={classes.root}>
+            <Box mt={20 / 8} ml={'32px'} mr={15 / 8} display={'flex'} justifyContent={'space-between'}>
+                <Box display={'flex'}>{
+                    [ 1, 2, 3, 4, 5
+                    ].map((item: any) => <Box mr={'2px'}>
+                        {item > 3 ? <img src={"/assets/unstar.svg"} /> : <img src={"/assets/star.svg"} />}
+                    </Box>)
 
+                }</Box>
+                <Box color={'#bfbfbf'}>Арт. {products.code}</Box>
+            </Box>
             <CardMedia
                 className={classes.media}
                 image={`/assets/${products.imgUrl}`}
@@ -95,7 +104,10 @@ export default function ArticleItem(props: ArticleItemProps) {
                     }
                 </Box>
                 <Box fontSize={30} mb={1}>
-                    49 999 py6.
+                    49 999 pyб.
+                </Box>
+                <Box mb={1} color={'primary.mai'}>
+                    +490 бoнycoв
                 </Box>
                 <Box mt={1} display={'flex'} justifyContent={'space-between'}>
                     <Button className={classes.button}

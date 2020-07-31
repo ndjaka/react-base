@@ -66,7 +66,7 @@ export const addFavEffect = (id: number): Effect => async (dispatch, getState) =
 export const removeFavEffect = (id: number): Effect => async (dispatch, getState) => {
     dispatch(loadProductsRequest());
 
-    return ArticleService.get_fav_success(id)
+    return ArticleService.get_fav_fail(id)
         .then(async (response: any) => {
 
             if (response.status === 200) {

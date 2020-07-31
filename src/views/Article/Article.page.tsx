@@ -10,7 +10,10 @@ import { ApplicationState } from 'store/types';
 const useStyles = makeStyles((theme) =>
     createStyles({
         root: {
-            margin: theme.spacing(1.8),
+            display:'flex',
+            justifyContent: 'center',
+            width:'auto',
+           
         },
     }),
 );
@@ -34,12 +37,12 @@ export default function Article() {
 
     return (
 
-        <Container maxWidth={'lg'} className={classes.root} >
+        <Container  className={classes.root} >
             <Grid container >
-                <Grid item lg={9}>
+                <Grid item lg={9} md={9} xs={12}>
                     <ArticleList  />
                 </Grid>
-                <Grid item lg={3}>
+                <Grid item lg={3} md={3} sm={12} xs={12}>
                     <Filters  loadData={loadData}/>
                 </Grid>
             </Grid>

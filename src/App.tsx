@@ -61,7 +61,7 @@ const App = () => {
                 <CssBaseline />
                 <ScrollReset />
                 <Routes />
-                {config.env === 'DEV' && <MockedButton />}
+                {/* {config.env === 'DEV' && <MockedButton />} */}
              {/*  </Auth> */}
             </SnackbarProvider>
           </React.Fragment>
