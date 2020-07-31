@@ -19,8 +19,8 @@ export const UserUrls = {
 export const article = {
   PRODUCTS_SUCCESS: `${prefixer}PRODUCTS_SUCCESS`,
   FAVORITE_FAIL: `${prefixer}FAVORITE_FAIL`,
-  FAVORITE_SUCCESS: `${prefixer}/FAVORITE_SUCCESS`,
-  FILTER_SUCCESS: `${prefixer}FILTER_SUCCESS`,
+  FAVORITE_SUCCESS: (productID:number)=>`${prefixer}/FAVORITE_SUCCESS?productID=${productID}`,
+  FILTER_SUCCESS:(filter:any)=>`${prefixer}FILTER_SUCCESS?filters=${filter}`,
   FILTER_FAIL: `${prefixer}FILTER_FAIL`,
 
 };

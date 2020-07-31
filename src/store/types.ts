@@ -21,7 +21,7 @@ import {
   InternationalisationState,
   SetTranslatorFunction
 } from './types/InternationalisationTypes';
-import { LoadProductsRequest, LoadProductsSuccess, LoadProductsError, ProductsState } from './types/ProductTypes';
+import { LoadProductsRequest, LoadProductsSuccess, LoadProductsError, ProductsState, addFavSuccess } from './types/ProductTypes';
 
 export * from './types/UsersTypes';
 export * from './types/InternationalisationTypes';
@@ -50,4 +50,5 @@ export type ApplicationAction =
   | SetTranslatorFunction
   | LoadProductsRequest
   | LoadProductsSuccess
+  | addFavSuccess
   | LoadProductsError;

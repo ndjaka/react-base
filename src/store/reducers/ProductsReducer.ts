@@ -1,6 +1,6 @@
 import produce from 'immer';
 import { ApplicationAction } from 'store/types';
-import { LOAD_PRODUCTS_REQUEST, ProductsState, LOAD_PRODUCTS_SUCCESS, LOAD_PRODUCTS_ERROR } from 'store/types/ProductTypes';
+import { LOAD_PRODUCTS_REQUEST, ProductsState, LOAD_PRODUCTS_SUCCESS, LOAD_PRODUCTS_ERROR, ADD_FAV_SUCCESS } from 'store/types/ProductTypes';
 
 
 export const initialState: ProductsState = {
@@ -8,7 +8,8 @@ export const initialState: ProductsState = {
         product_failed: false,
         product_loading: false
     },
-    products:[]
+    products:[],
+    
 };
 
 const reducer = (state = initialState, action: ApplicationAction) => {
@@ -29,6 +30,12 @@ const reducer = (state = initialState, action: ApplicationAction) => {
                     return produce(state, (draft) => {
                         draft.loading.product_failed = false;
                         draft.loading.product_loading = false;
+                    });
+
+                case ADD_FAV_SUCCESS:
+                    return produce(state, (draft) => {
+                    draft.products= draft.products.map(
+                        (item)=> item.id === action.id ? {...item,inFav:action.fav}:item)
                     });
         default:
             return state;

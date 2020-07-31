@@ -105,41 +105,27 @@ const data: dataStructure[] = [
 export default function Filters(props: any) {
     const { loadData } = props
     const [dataFilter, setDataFilTer] = React.useState(data);
-    const dispatch = useDispatch();
-    const loadDataFiltering = useCallback(
-        () => {
-            dispatch(filterEffects());
-        },
-        [dispatch]
-    )
-    React.useEffect(() => {
-        loadDataFiltering()
+    const [dataToSend, setDataToSend] = React.useState<any[]>(['']);
 
-    }, [loadDataFiltering])
+    const dispatch = useDispatch();
+    const handleSendData = () => {
+        dispatch(filterEffects(dataToSend));
+    }
+
 
     const handleItemToFilter = (Item: dataStructure) => {
         if (Item.checked === false) {
             setDataFilTer(dataFilter.map((item) => item.id === Item.id ? { ...item, checked: true } : item));
-            loadDataFiltering();
+            setDataToSend([...dataToSend, Item.name]);
         } else {
             setDataFilTer(dataFilter.map((item) => item.id === Item.id ? { ...item, checked: false } : item));
+            setDataToSend(dataToSend.filter((value: any) => value !== Item.name))
         }
 
     }
 
 
-    React.useEffect(() => {
-        let isChecked: boolean = false;
-        dataFilter.forEach((item: dataStructure) => {
-            if (item.checked) {
-                isChecked = true;
-            }
-        })
-        if (isChecked === false) {
-            loadData();
-        }
 
-    }, [dataFilter])
 
 
 
@@ -153,7 +139,7 @@ export default function Filters(props: any) {
                         fullWidth
                         color={'primary'}
                         variant={'contained'}
-                        onClick={() => loadData()}
+                        onClick={() => handleSendData()}
                     >Показать результат
                 </Button>
                 </Box>
@@ -162,6 +148,8 @@ export default function Filters(props: any) {
                         fullWidth
                         color={'secondary'}
                         variant={'contained'}
+                        onClick={() => loadData()}
+
                     >Очистить фильтр
                 </Button>
                 </Box>

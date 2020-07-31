@@ -1,5 +1,5 @@
 import { ThunkAction } from 'redux-thunk';
-import { loadProductsRequest, loadProductsSuccess, loadProductsError } from 'store/actions';
+import { loadProductsRequest, loadProductsSuccess, loadProductsError, AddFavSuccess } from 'store/actions';
 import { ArticleService } from 'services/api';
 import { ProductsState, ApplicationAction, ApplicationState } from 'store/types';
 
@@ -28,17 +28,52 @@ export const loadProductEffects = (): Effect => async (dispatch, getState) => {
         .catch(() => dispatch(loadProductsError()));
 };
 
-export const filterEffects = (): Effect => async (dispatch, getState) => {
+export const filterEffects = (data:any): Effect => async (dispatch, getState) => {
     dispatch(loadProductsRequest());
 
-    return ArticleService.get_filter_success()
+    return ArticleService.get_filter_success(data)
         .then(async (response: any) => {
 
             if (response.status === 200) {
 
                 const { data } = await response.json();
-                console.log('data', data)
                 dispatch(loadProductsSuccess(data.products));
+            } else {
+                dispatch(loadProductsError());
+            }
+        })
+        .catch(() => dispatch(loadProductsError()));
+};
+
+
+export const addFavEffect = (id: number): Effect => async (dispatch, getState) => {
+    dispatch(loadProductsRequest());
+
+    return ArticleService.get_fav_success(id)
+        .then(async (response: any) => {
+
+            if (response.status === 200) {
+
+                const { data } = await response.json();
+                dispatch(AddFavSuccess(id,data.inFav));
+            } else {
+                dispatch(loadProductsError());
+            }
+        })
+        .catch(() => dispatch(loadProductsError()));
+};
+
+export const removeFavEffect = (id: number): Effect => async (dispatch, getState) => {
+    dispatch(loadProductsRequest());
+
+    return ArticleService.get_fav_success(id)
+        .then(async (response: any) => {
+
+            if (response.status === 200) {
+
+                const { data } = await response.json();
+                dispatch(AddFavSuccess(id,false));
+                console.log(data.message)
             } else {
                 dispatch(loadProductsError());
             }

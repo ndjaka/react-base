@@ -5,7 +5,9 @@ import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
 
 import { Box, Button } from '@material-ui/core';
-import { Products } from 'store/types';
+import { Products, ApplicationState } from 'store/types';
+import { useDispatch } from 'react-redux';
+import { addFavEffect ,removeFavEffect} from 'store/effects/ProductEffets';
 
 
 
@@ -50,14 +52,22 @@ const useStyles = makeStyles((theme: Theme) =>
 
     }),
 );
-interface ArticleItemProps{
-    products:Products
+interface ArticleItemProps {
+    products: Products
 }
-export default function ArticleItem(props:ArticleItemProps) {
-    const {products}=props;
+export default function ArticleItem(props: ArticleItemProps) {
+    const { products } = props;
     const classes = useStyles();
+    const dispatch = useDispatch();
 
-   
+
+
+    const handleFav = (id: number) => {
+        dispatch(addFavEffect(id));
+    }
+    const handleFavRemove = (id: number) => {
+        dispatch(removeFavEffect(id));
+    }
 
     return (
         <Card className={classes.root}>
@@ -93,10 +103,10 @@ export default function ArticleItem(props:ArticleItemProps) {
                     </Button>
                     <Box display={'flex'} alignItems={'center'} >
                         <Box mr={10 / 6}>
-                            <img src={products.inFav ?  "/assets/favourite-active.svg" : "/assets/favourite-unactive.svg"} />
+                            <img src={products.inFav ? "/assets/favourite-active.svg" : "/assets/favourite-unactive.svg"} onClick={() => { products.inFav ? handleFavRemove(products.id) : handleFav(products.id) }} />
                         </Box>
                         <Box>
-                            <img src={products.inComparsion ? "/assets/comparison.svg":"/assets/comparison-unactive.jpg"} />
+                            <img src={products.inComparsion ? "/assets/comparison.svg" : "/assets/comparison-unactive.jpg"} />
                         </Box>
 
                     </Box>
