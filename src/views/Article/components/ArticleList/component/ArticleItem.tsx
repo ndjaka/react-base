@@ -94,7 +94,10 @@ export default function ArticleItem(props: ArticleItemProps) {
                             </Box>)
                     }
                 </Box>
-                <Box mt={38 / 8} display={'flex'} justifyContent={'space-between'}>
+                <Box fontSize={30} mb={1}>
+                    49 999 py6.
+                </Box>
+                <Box mt={1} display={'flex'} justifyContent={'space-between'}>
                     <Button className={classes.button}
                         color={'primary'}
                         variant={'contained'}
