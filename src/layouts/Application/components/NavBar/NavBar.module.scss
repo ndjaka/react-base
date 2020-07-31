@@ -1,0 +1,27 @@
+@import 'styles/_variables.scss';
+
+.root {
+}
+.content {
+  padding: $spacing_unit * 2;
+}
+.profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: fit-content;
+}
+.avatar {
+  width: 60px;
+  height: 60px;
+}
+.name {
+  color: #fff;
+  margin-top: $spacing_unit;
+}
+.divider {
+  margin-top: $spacing_unit * 2;
+}
+.navigation {
+  margin-top: $spacing_unit * 2;
+}

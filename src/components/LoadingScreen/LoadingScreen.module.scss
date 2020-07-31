@@ -1,0 +1,12 @@
+@import 'styles/_variables.scss';
+
+.root {
+  align-items: center;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: center;
+  min-height: 100%;
+  padding: $spacing_unit * 3;
+}
