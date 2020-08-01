@@ -19,7 +19,7 @@ export const loadProductEffects = (): Effect => async (dispatch, getState) => {
             if (response.status === 200) {
 
                 const { data } = await response.json();
-                console.log('data', data)
+                
                 dispatch(loadProductsSuccess(data.products));
             } else {
                 dispatch(loadProductsError());

@@ -56,7 +56,7 @@ function FormBuilder(props: UseFormBuilderProps) {
       initialValues={initialValues || {}}
       enableReinitialize={true}
       onSubmit={(values, actions) => {
-        console.log(values);
+      
         onSubmit(values, actions);
       }}
       validationSchema={Yup.object().shape(validations as any)}

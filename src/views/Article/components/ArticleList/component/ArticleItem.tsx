@@ -11,53 +11,12 @@ import { addFavEffect, removeFavEffect } from 'store/effects/ProductEffets';
 import styles from './ArticleItem.module.scss'
 
 
-const useStyles = makeStyles((theme: Theme) =>
-    createStyles({
-        root: {
-            maxWidth: 307,
-            borderRadius: 0,
-            maxHeight: 590,
-            boxShadow: 'none'
 
-        },
-        content: {
-            paddingLeft: 32.8
-        },
-        media: {
-            height: 157,
-            width: 211,
-            marginTop: 15, // 16:9
-            marginLeft: 56,
-            marginRight: 38.5
-        },
-        description: {
-            fontSize: 17.8,
-            marginTop: 5,
-            marginBottom: 17
-        },
-        label: {
-            fontSize: 11.8,
-            lineHeight: '22px',
-            color: '#9b9b9b'
-        }
-        ,
-        value: {
-            fontSize: 12,
-            lineHeight: '22px',
-            fontWeight: 300
-        },
-        button: {
-            borderRadius: 0
-        }
-
-    }),
-);
 interface ArticleItemProps {
     products: Products
 }
 export default function ArticleItem(props: ArticleItemProps) {
     const { products } = props;
-    const classes = useStyles();
     const dispatch = useDispatch();
 
 
@@ -79,7 +38,7 @@ export default function ArticleItem(props: ArticleItemProps) {
                     </Box>)
 
                 }</Box>
-                <Box color={'#bfbfbf'}>Арт. {products.code}</Box>
+                <Box color={'#bfbfbf'} className={styles.article_code}>Арт. {products.code}</Box>
             </Box>
             <CardMedia
                 className={styles.article_media}

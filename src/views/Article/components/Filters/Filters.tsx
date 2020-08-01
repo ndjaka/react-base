@@ -6,37 +6,7 @@ import { Box, Button } from '@material-ui/core';
 import { Grid } from '@material-ui/core';
 import { filterEffects } from 'store/effects/ProductEffets';
 import { useDispatch } from 'react-redux';
-
-const useStyles = makeStyles((theme: Theme) =>
-    createStyles({
-        root: {
-            maxWidth: 308.1,
-            borderRadius: 0,
-            /*  maxHeight: 325, */
-            boxShadow: 'none',
-            marginTop: '30px 28.9px 0 28.1px',
-
-        },
-        button: {
-            borderRadius: 0
-        },
-        secondButton: {
-            borderRadius: 0,
-            boxShadow: 'none',
-            background: theme.palette.secondary.light,
-            color: '#333333'
-        },
-        content: {
-            margin: 0
-        },
-        value: {
-            fontSize: 12,
-            lineHeight: '22px',
-            fontWeight: 300
-        },
-
-    }),
-);
+import styles from './Filter.module.scss'
 
 
 interface dataStructure {
@@ -134,12 +104,12 @@ export default function Filters(props: any) {
 
 
 
-    const classes = useStyles();
+    
     return (
-        <Card className={classes.root}>
-            <CardContent className={classes.content}>
+        <Card className={styles.filter}>
+            <CardContent className={styles.filter_content}>
                 <Box>
-                    <Button className={classes.button}
+                    <Button className={styles.filter_button}
                         fullWidth
                         color={'primary'}
                         variant={'contained'}
@@ -148,7 +118,7 @@ export default function Filters(props: any) {
                 </Button>
                 </Box>
                 <Box mt={10 / 8}>
-                    <Button className={classes.secondButton}
+                    <Button className={styles.filter_second_button}
                         fullWidth
                         color={'secondary'}
                         variant={'contained'}
@@ -158,7 +128,7 @@ export default function Filters(props: any) {
                 </Button>
                 </Box>
                 <Box mt={26/8}>
-                    <Box fontSize={17} maxHeight={42}>
+                    <Box fontSize={17} maxHeight={42} className={styles.filter_text}>
                         Производитель
                     </Box>
                     <Box>
@@ -173,7 +143,7 @@ export default function Filters(props: any) {
                                                 color="primary"
                                             />
                                         }
-                                        label={<Box className={classes.value}>{item.name}</Box>}
+                                        label={<Box className={styles.filter_value}>{item.name}</Box>}
                                     />
                                 </Grid>)
                             }
