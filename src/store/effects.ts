@@ -1,2 +1,2 @@
-export * from './effects/UsersEffects';
-export * from './effects/AccountEffects';
+export * from './effects/ProductEffets';
+

@@ -16,7 +16,7 @@ import store from 'store';
 import Routes from 'routes';
 import 'translations';
 import config from './config';
-import { MockedButton, ScrollReset } from 'components';
+
 import Auth from 'routes/Auth';
 import 'styles/index.scss';
 const jss = create({ plugins: [...jssPreset().plugins, rtl()] });
@@ -59,7 +59,7 @@ const App = () => {
               anchorOrigin={{ vertical: 'top', horizontal: 'right' }}>
               {/* <Auth> */}
                 <CssBaseline />
-                <ScrollReset />
+                {/* <ScrollReset /> */}
                 <Routes />
                 {/* {config.env === 'DEV' && <MockedButton />} */}
              {/*  </Auth> */}

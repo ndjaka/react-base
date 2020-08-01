@@ -5,12 +5,12 @@ import { ApplicationState } from 'store/types';
 
 function AuthGuard(props: any) {
   const { children } = props;
-  const account = useSelector((state: ApplicationState) => state.account);
+  
 
-  if (!account.user) {
+  /* if (!account.user) {
     return <Redirect to="/auth/login" />;
   }
-
+ */
   return children;
 }
 

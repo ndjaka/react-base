@@ -5,13 +5,11 @@ import { ApplicationState } from 'store/types';
 
 function GuestGuard(props: any) {
   const { children } = props;
-  const account = useSelector((state: ApplicationState) => state.account);
+  /* const account = useSelector((state: ApplicationState) => state.account); */
 
-  if (account.user) {
+  
     return <Redirect to="/home/article" />;
-  }
-
-  return children;
+  
 }
 
 export default GuestGuard;

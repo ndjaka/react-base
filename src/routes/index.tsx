@@ -5,7 +5,7 @@ import AuthLayout from 'layouts/Auth';
 import ApplicationLayout from 'layouts/Application';
 import { RouteConfig } from 'react-router-config';
 import { Switch, Redirect, Route } from 'react-router-dom';
-import { LoadingScreen } from 'components';
+
 import AuthGuard from './AuthGuard';
 import GuestGuard from './GuestGuard';
 
@@ -13,18 +13,14 @@ const routesConfig: RouteConfig[] = [
   {
     path: '/',
     exact: true,
-    component: () => <Redirect to="/home/article" />
+    component:lazy(() => import('views/Article/Article.page'))
   },
   {
     path: '/home',
     layout: AuthLayout,
     guard: GuestGuard,
     routes: [
-      {
-        path: '/auth/login',
-        exact: true,
-        component: lazy(() => import('views/auth/login/Login.page'))
-      },
+     
       {
         path: '/home/article',
         exact: true,
@@ -40,18 +36,14 @@ const routesConfig: RouteConfig[] = [
     layout: ApplicationLayout,
     guard: AuthGuard,
     routes: [
-      {
-        path: '/app/home',
-        exact: true,
-        component: lazy(() => import('views/dashboard/Dashboard.page'))
-      }
+     
     ]
   }
 ];
 
 const renderRoutes = (routes: RouteConfig[]) =>
   routes ? (
-    <Suspense fallback={<LoadingScreen />}>
+    <Suspense fallback={<div />}>
       <Switch>
         {routes.map((route, i) => {
           const Guard = route.guard || Fragment;

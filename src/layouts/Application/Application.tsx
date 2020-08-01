@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { NavBar, TopBar } from './components';
-import { ErrorHandler } from 'components';
+
 
 import styles from './Application.module.scss';
 
@@ -10,19 +9,13 @@ const Application = (props: any) => {
 
   return (
     <div className={styles.root}>
-      <ErrorHandler>
-        <TopBar onMobileNavOpen={() => setMobileNavOpen(true)} />
-      </ErrorHandler>
-      <ErrorHandler>
-        <NavBar
-          onMobileClose={() => setMobileNavOpen(false)}
-          openMobile={isMobileNavOpen}
-        />
-      </ErrorHandler>
+      
+      
+   
       <div className={styles.wrapper}>
         <div className={styles.contentContainer}>
           <div className={styles.content}>
-            <ErrorHandler>{children}</ErrorHandler>
+            {children}
           </div>
         </div>
       </div>
