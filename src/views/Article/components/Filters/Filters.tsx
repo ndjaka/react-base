@@ -22,6 +22,7 @@ const useStyles = makeStyles((theme: Theme) =>
         },
         secondButton: {
             borderRadius: 0,
+            boxShadow: 'none',
             background: theme.palette.secondary.light,
             color: '#333333'
         },
@@ -156,7 +157,7 @@ export default function Filters(props: any) {
                     >Очистить фильтр
                 </Button>
                 </Box>
-                <Box mt={1}>
+                <Box mt={26/8}>
                     <Box fontSize={17} maxHeight={42}>
                         Производитель
                     </Box>

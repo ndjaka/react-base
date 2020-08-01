@@ -1,16 +1,13 @@
 @font-face {
   font-family: 'ProximaNova-Light';
-  src: local('ProximaNova-Light'),
-    url('/fonts/ProximaNova_Light/ProximaNova_Light.ttf') format('truetype');
+  src: url('/fonts/ProximaNova_Light.ttf') format('truetype');
 }
 @font-face {
   font-family: 'ProximaNova-Regular';
-  src: local('ProximaNova-Regular'),
-    url('/fonts/ProximaNova_Light/ProximaNova_Regular.ttf') format('truetype');
+  src: url('/fonts/ProximaNova_Regular.ttf') format('truetype');
 }
 
 @font-face {
   font-family: 'ProximaNova-Semibold';
-  src: local('ProximaNova-Semibold'),
-    url('/fonts/ProximaNova_Light/ProximaNova_Semibold.ttf') format('truetype');
+  src: url('/fonts/ProximaNova_Semibold.ttf') format('truetype');
 }
